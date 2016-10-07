@@ -1,0 +1,10 @@
+.navbar-toggle.navbar-left {
+  float: left;
+  margin-left: 10px;
+}
+.navbar-brand{
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}

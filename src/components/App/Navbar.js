@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import './Navbar.scss'
 
 export default class Navbar extends Component {
 
@@ -9,7 +9,7 @@ export default class Navbar extends Component {
         <div className="navbar  navbar-default nav-app navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
-              <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#mynavbar-content">
+              <button type="button" className="navbar-toggle navbar-left" data-toggle="collapse" data-target="#mynavbar-content">
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
