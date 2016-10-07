@@ -1,0 +1,49 @@
+{
+  "name": "sud-mun",
+  "version": "1.0.0",
+  "description": "SUD-MUN",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot --inline --port 9999",
+    "build": "webpack --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wit543/Sud-Mun.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wit543/Sud-Mun/issues"
+  },
+  "homepage": "https://github.com/wit543/Sud-Mun#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "react": "^15.3.2",
+    "react-bootstrap": "^0.30.3",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
+    "validator": "^6.0.0",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-preset-stage-0": "^6.5.0",
+    "node-sass": "^3.10.0",
+    "file-loader": "^0.9.0",
+    "postcss": "^5.2.0",
+    "postcss-loader": "^0.13.0",
+    "react-hot-loader": "^3.0.0-beta.3",
+    "css-loader": "^0.25.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
+  }
+}
