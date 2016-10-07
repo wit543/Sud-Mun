@@ -1,6 +1,6 @@
 // path : /ui/index.js
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import {App} from './components'
+import routes from './routes'
 
-render(<App />, document.getElementById('app'))
+render(routes(), document.getElementById('app'))

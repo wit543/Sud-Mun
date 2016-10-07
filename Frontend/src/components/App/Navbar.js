@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import './Navbar.scss'
 
 export default class Navbar extends Component {
@@ -14,12 +15,16 @@ export default class Navbar extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">SOD-MUN</a>
+              <a className="navbar-brand" href="#">SUD-MUN</a>
             </div>
 
             <div className="collapse navbar-collapse " id="mynavbar-content">
               <ul className="nav navbar-nav">
-                <li ><a href="#">Feature 1</a></li>
+                <li >
+                  <Link to={{ pathname:'/' }}>
+                    Feature 1
+                  </Link>
+                </li>
                 <li ><a href="#">Feature 2</a></li>
                 <li ><a href="#">Feature 3</a></li>
               </ul>
