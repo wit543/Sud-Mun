@@ -28,7 +28,7 @@ export default class SearchBar extends Component {
                   value={this.state.value}
                   onChange={this.handleChange} />
                 <span className="input-group-btn">
-                <button className="btn btn-secondary"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button className="btn btn-default" type="button"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
               </span>
               </div>
             </div>
