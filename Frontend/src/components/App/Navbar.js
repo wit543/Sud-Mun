@@ -15,17 +15,21 @@ export default class Navbar extends Component {
                 <span className="icon-bar"></span>
                 <span className="icon-bar"></span>
               </button>
-              <a className="navbar-brand" href="#">SUD-MUN</a>
+              <span className="navbar-brand">SUD-MUN</span>
             </div>
 
             <div className="collapse navbar-collapse " id="mynavbar-content">
               <ul className="nav navbar-nav">
-                <li >
+                <li>
                   <Link to={{ pathname:'/' }}>
                     Map
                   </Link>
                 </li>
-                <li ><a href="#">Flood</a></li>
+                <li>
+                  <Link to={{ pathname:'/flood' }}>
+                    Flood
+                  </Link>
+                </li>
                 <li ><a href="#">Drought</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">

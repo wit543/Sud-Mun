@@ -6,7 +6,7 @@ var map
 var infoWindow
 var lats = ''
 var lngs = ''
-export default class Map extends Component{
+export default class MapFlood extends Component{
   createMap() {
     map = new GMaps({
       el: '#map',
@@ -23,11 +23,13 @@ export default class Map extends Component{
       url: API_FLOOD,
       suppressInfoWindows: true,
       events: {
+
         click: function(point) {
           infoWindow.setContent(point.featureData.infoWindowHtml);
           infoWindow.setPosition(point.latLng);
           infoWindow.open(map.map);
         }
+
       }
     });
     this.setCurrentPosition();
@@ -75,7 +77,7 @@ export default class Map extends Component{
           lat: lats,
           lng: lngs,
           zoom: 6,
-          zoomControl: false,
+          zoomControl: true,
           panControl: false,
           streetViewControl: false,
           mapTypeControl: false,
@@ -87,6 +89,20 @@ export default class Map extends Component{
           title: 'Your are here',
           click: function(e) {
             alert('Hello');
+          }
+        });
+        infoWindow = new google.maps.InfoWindow({});
+        map.loadFromKML({
+          url: API_FLOOD,
+          suppressInfoWindows: true,
+          events: {
+
+            click: function(point) {
+              infoWindow.setContent(point.featureData.infoWindowHtml);
+              infoWindow.setPosition(point.latLng);
+              infoWindow.open(map.map);
+            }
+
           }
         });
       },

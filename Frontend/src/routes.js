@@ -3,15 +3,19 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import {
   App,
 } from './components'
+import {
+  Map,
+  MapFlood,
+} from './components/Map'
 
 export default () => {
   return (
     <Router history={browserHistory}>
       <Router path='/' component={App}>
-        {/* <IndexRoute component={Home} /> */}
-        {/* <route path='contact'>
-          <IndexRoute component={Contact} />
-        </route> */}
+        <IndexRoute component={Map} />
+        <route path='flood'>
+          <IndexRoute component={MapFlood} />
+        </route>
       </Router>
     </Router>
   )
