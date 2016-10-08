@@ -6,7 +6,7 @@ var map
 var infoWindow
 var lats = ''
 var lngs = ''
-export default class Map extends Component{
+export default class MapFlood extends Component{
   createMap() {
     map = new GMaps({
       el: '#map',

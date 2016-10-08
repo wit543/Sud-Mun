@@ -18,7 +18,9 @@ export default class App extends Component {
       <div >
         <Navbar/>
         <SearchBar/>
-        <Map/>
+        <div>
+          {this.props.children}
+        </div>
       </div>
     )
   }
