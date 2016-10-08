@@ -9,15 +9,13 @@ import Navbar from './Navbar'
 import SearchBar from './SearchBar'
 import 'whatwg-fetch'
 import $ from 'jquery'
-
-
 export default class App extends Component {
 
   render() {
     return (
       <div >
         <Navbar/>
-        <SearchBar/>
+        {/* <SearchBar/> */}
         <div>
           {this.props.children}
         </div>

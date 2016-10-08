@@ -36,7 +36,7 @@ export default class MapFlood extends Component{
   }
 
   test(){
-    
+
   }
 
   componentDidMount() {
@@ -118,6 +118,11 @@ export default class MapFlood extends Component{
         console.log("Done!");
       }
     });
+  }
+  onClickSearch(e){
+      e.preventDefault()
+      let input = ReactDOM.findDOMNode(this.refs.input_search).value
+      console.log("search",input);
   }
   render(){
 
