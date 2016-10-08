@@ -103,7 +103,7 @@ export default class App extends Component {
         <div className="map-holder">
           <div id="map"></div>
         </div>
-        <button onClick={this.setCurrentPosition.bind(this)}>Me</button>
+        {/* <button onClick={this.setCurrentPosition.bind(this)}>Me</button> */}
       </div>
     )
   }

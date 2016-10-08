@@ -1,17 +1,13 @@
 #map {
-	max-width: 500px;
-	height: 350px;
-  margin-top: 100px;
-	margin: 0 auto;
+	left:0;
+	top:0;
+	height:100%;
+	width:100%;
+	position:absolute;
 }
 
 .map-holder {
-	max-width: 500px;
-	height: 350px;
-	margin: 0 auto;
-  margin-top: 80px;
-	background-color: #FCFCFC;
-	position: relative;
-	border-radius: 2px;
-	border: 2px;
+	// overflow:auto;
+	// position:relative;
+	height:0;
 }
