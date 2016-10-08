@@ -1,4 +1,5 @@
 {
     "extends": "google",
-    "installedESLint": true
+    "installedESLint": true,
+    "indent": ["error", 4] 
 }
