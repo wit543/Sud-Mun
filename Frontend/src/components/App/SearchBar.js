@@ -24,11 +24,11 @@ export default class SearchBar extends Component {
           <div className="form-group">
             <div className="col-xs-12 col-md-6 col-md-offset-3">
               <div className="input-group">
-                <input type="text" className="form-control" id="address" placeholder="Input your location..."
+                <input type="text" className="form-control search-bar" id="address" placeholder="Input your location..."
                   value={this.state.value}
                   onChange={this.handleChange} />
                 <span className="input-group-btn">
-                <button className="btn btn-default" type="button"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                <button className="btn btn-default search-btn"><span className="glyphicon glyphicon-search" aria-hidden="true"></span></button>
               </span>
               </div>
             </div>

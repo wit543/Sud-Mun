@@ -25,8 +25,8 @@ export default class Navbar extends Component {
                     Map
                   </Link>
                 </li>
-                <li ><a href="#">Oh my Flood</a></li>
-                <li ><a href="#">What the Drought</a></li>
+                <li ><a href="#">Flood</a></li>
+                <li ><a href="#">Drought</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
               </ul>
