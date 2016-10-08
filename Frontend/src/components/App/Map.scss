@@ -14,8 +14,11 @@
 	// position:absolute;
 	height:0;
 
-	button{
+	.btn-currentlocation{
 		position: absolute;
 		margin-top: 200px;
+		border-radius: 5px;
+		padding-top: 18px;
+		background-image: url(../../assets/my_location.svg);
 	}
 }
