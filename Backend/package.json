@@ -1,0 +1,16 @@
+{
+  "name": "sudmun_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PNNutkung",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^3.7.1",
+    "eslint-config-google": "^0.6.0",
+    "express": "^4.14.0"
+  }
+}
