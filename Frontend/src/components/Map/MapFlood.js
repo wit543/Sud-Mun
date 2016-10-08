@@ -2,13 +2,13 @@
 import React, { Component } from 'react'
 const END_POINT = 'http://ipinfo.io/'
 const API_FLOOD = 'http://128.199.192.241:3000/api/flood/2005'
-var mapflood
+var map
 var infoWindow
-var latsflood = ''
-var lngsflood = ''
+var lats = ''
+var lngs = ''
 export default class MapFlood extends Component{
   createMap() {
-    mapflood = new GMaps({
+    map = new GMaps({
       el: '#map',
       lat: 14.46523,
       lng: 100.13137,
@@ -19,7 +19,7 @@ export default class MapFlood extends Component{
       overviewMapControl: false
     });
     infoWindow = new google.maps.InfoWindow({});
-    mapflood.loadFromKML({
+    map.loadFromKML({
       url: API_FLOOD,
       suppressInfoWindows: true,
       events: {
@@ -27,7 +27,7 @@ export default class MapFlood extends Component{
         click: function(point) {
           infoWindow.setContent(point.featureData.infoWindowHtml);
           infoWindow.setPosition(point.latLng);
-          infoWindow.open(mapflood.map);
+          infoWindow.open(map.map);
         }
 
       }
@@ -48,14 +48,14 @@ export default class MapFlood extends Component{
     this.lastLat = this.props.lat;
     this.lastLng = this.props.lng
 
-    let mapflood = new GMaps({
+    let map = new GMaps({
       el: '#map',
       lat: this.props.lat,
       lng: this.props.lng
     });
 
 
-    mapflood.addMarker({
+    map.addMarker({
       lat: this.lats,
       lng: this.lngs
     });
@@ -66,16 +66,16 @@ export default class MapFlood extends Component{
   setCurrentPosition() {
     GMaps.geolocate({
       success: function(position) {
-        mapflood.setCenter(position.coords.latitude, position.coords.longitude);
+        map.setCenter(position.coords.latitude, position.coords.longitude);
         console.log('poslat:' + position.coords.latitude)
         console.log('poslon:' + position.coords.longitude)
-        latsflood = position.coords.latitude
-        lngsflood = position.coords.longitude
+        lats = position.coords.latitude
+        lngs = position.coords.longitude
 
-        mapflood = new GMaps({
+        map = new GMaps({
           el: '#map',
-          lat: latsflood,
-          lng: lngsflood,
+          lat: lats,
+          lng: lngs,
           zoom: 6,
           zoomControl: true,
           panControl: false,
@@ -83,16 +83,16 @@ export default class MapFlood extends Component{
           mapTypeControl: false,
           overviewMapControl: false
         });
-        mapflood.addMarker({
-          lat: latsflood,
-          lng: lngsflood,
+        map.addMarker({
+          lat: lats,
+          lng: lngs,
           title: 'Your are here',
           click: function(e) {
             alert('Hello');
           }
         });
         infoWindow = new google.maps.InfoWindow({});
-        mapflood.loadFromKML({
+        map.loadFromKML({
           url: API_FLOOD,
           suppressInfoWindows: true,
           events: {
@@ -100,7 +100,7 @@ export default class MapFlood extends Component{
             click: function(point) {
               infoWindow.setContent(point.featureData.infoWindowHtml);
               infoWindow.setPosition(point.latLng);
-              infoWindow.open(mapflood.map);
+              infoWindow.open(map.map);
             }
 
           }
