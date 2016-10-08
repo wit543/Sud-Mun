@@ -1,21 +1,8 @@
 (function() {
     'use strict';
     module.exports = function(app, net) {
-        app.get('/flood/months', function(req, res) {
-            return res.json({
-                jan: 100,
-                feb: 150,
-                mar: 80,
-                apr: 95,
-                may: 105,
-                jun: 60,
-                july: 55,
-                aug: 84,
-                sep: 99,
-                oct: 107,
-                nov: 46,
-                dec: 30
-            });
+        app.get('/flood/:year', function(req, res) {
+            res.redirect('/static/floods/flood_'+req.params.year+'_geo_link.kml');
         });
     };
 }());
