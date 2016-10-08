@@ -18,18 +18,7 @@ export default class Map extends Component{
       mapTypeControl: false,
       overviewMapControl: false
     });
-    infoWindow = new google.maps.InfoWindow({});
-    map.loadFromKML({
-      url: API_FLOOD,
-      suppressInfoWindows: true,
-      events: {
-        click: function(point) {
-          infoWindow.setContent(point.featureData.infoWindowHtml);
-          infoWindow.setPosition(point.latLng);
-          infoWindow.open(map.map);
-        }
-      }
-    });
+    
     this.setCurrentPosition();
 
 
