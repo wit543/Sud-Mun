@@ -20,7 +20,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        {/* <Navbar/> */}
         <div className="map-holder">
           <div id="map"></div>
         </div>
