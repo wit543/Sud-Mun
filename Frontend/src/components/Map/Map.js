@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import SearchBar from '../App/SearchBar'
 import ReactDOM from 'react-dom'
-
+import  MapModal  from './MapModal'
 const END_POINT = 'http://ipinfo.io/'
 const API_FLOOD = 'http://128.199.192.241:3000/api/flood/2005'
 var map
@@ -10,6 +10,22 @@ var infoWindow
 var lats = ''
 var lngs = ''
 export default class Map extends Component{
+
+  constructor(props){
+    super(props)
+    this.close = this.props.onClose
+    this.state =  { showModal: false }
+
+  }
+
+  onShowModal() {
+    this.setState({ showModal: true })
+  }
+
+  onCloseModal() {
+    this.setState({ showModal: false })
+  }
+
   createMap() {
     map = new GMaps({
       el: '#map',
@@ -55,6 +71,7 @@ export default class Map extends Component{
 
 
   setCurrentPosition() {
+    var self = this
     GMaps.geolocate({
       success: function(position) {
         map.setCenter(position.coords.latitude, position.coords.longitude);
@@ -65,13 +82,13 @@ export default class Map extends Component{
 
         map.lat = lats
         map.lng = lngs
-
+        map.removeMarkers()
         map.addMarker({
           lat: lats,
           lng: lngs,
           title: 'Your are here',
           click: function(e) {
-            alert('Hello');
+            self.onShowModal()
           }
         });
       },
@@ -86,6 +103,24 @@ export default class Map extends Component{
       }
     });
   }
+
+  addMark(){
+    var self = this
+    GMaps.on('click', map.map, function(event) {
+      lats = event.latLng.lat();
+      lngs = event.latLng.lng();
+      map.removeMarkers()
+      map.addMarker({
+        lat: lats,
+        lng: lngs,
+        title: 'Your are here',
+        click: function(e) {
+          self.onShowModal()
+        }
+      });
+    });
+  }
+
   onClickSearch(e){
       e.preventDefault()
       let input = ReactDOM.findDOMNode(this.refs.input_search).value
@@ -119,7 +154,7 @@ export default class Map extends Component{
           console.log("new",latlng.lng());
           map.lat = latlng.lat()
           map.lng =  latlng.lng()
-          
+
           lats = latlng.lat()
           lngs = latlng.lng()
 
@@ -130,7 +165,7 @@ export default class Map extends Component{
             lng: lngs,
             title: results[0].formatted_address,
             click: function(e) {
-              alert('Hello');
+              self.onShowModal()
             }
           });
   			}
@@ -143,11 +178,12 @@ export default class Map extends Component{
       <div className = "map-container">
         <SearchBar
           onSearch={this.searchForAddress.bind(this)} />
-        <div id = "map" ></div>
+        <div id = "map" onDoubleClick={this.addMark.bind(this)}></div>
         <button className = "btn btn-default btn-currentlocation btn-sm"
           onClick = {this.setCurrentPosition.bind(this)}>
           <span className = "icon-mylocation" aria-hidden = "true" ></span>
         </button>
+        <MapModal showModal={this.state.showModal} onClose={this.onCloseModal.bind(this)}/>
       </div>
     );
   }
