@@ -8,7 +8,7 @@
 
         require('./flood')(apiRoutes);
 
-        require('./drought')(apiRoutes, net);
+        require('./drought')(apiRoutes);
 
         app.use('/static', express.static('public'));
 
