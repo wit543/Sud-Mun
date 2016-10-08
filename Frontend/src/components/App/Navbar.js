@@ -22,11 +22,11 @@ export default class Navbar extends Component {
               <ul className="nav navbar-nav">
                 <li >
                   <Link to={{ pathname:'/' }}>
-                    Feature 1
+                    Map
                   </Link>
                 </li>
-                <li ><a href="#">Feature 2</a></li>
-                <li ><a href="#">Feature 3</a></li>
+                <li ><a href="#">Oh my Flood</a></li>
+                <li ><a href="#">What the Drought</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
               </ul>

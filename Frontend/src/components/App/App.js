@@ -77,13 +77,13 @@ export default class App extends Component {
           overviewMapControl: false
         });
         map.addMarker({
-              lat: lats,
-              lng: lngs,
-              title: 'Your are here',
-              click: function(e) {
-                alert('Hello');
-              }
-            });
+          lat: lats,
+          lng: lngs,
+          title: 'Your are here',
+          click: function(e) {
+            alert('Hello');
+          }
+        });
       },
       error: function(error) {
         alert('Geolocation failed: '+error.message);
@@ -100,11 +100,11 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
-        <div className="map-holder">
+        {/* <Navbar/> */}
+        <div className="map-container">
+          <button onClick={this.setCurrentPosition.bind(this)}>Me</button>
           <div id="map"></div>
         </div>
-        {/* <button onClick={this.setCurrentPosition.bind(this)}>Me</button> */}
       </div>
     )
   }
