@@ -33,8 +33,10 @@ export default class MapFlood extends Component{
       }
     });
     this.setCurrentPosition();
+  }
 
-
+  test(){
+    
   }
 
   componentDidMount() {
