@@ -6,5 +6,5 @@
         require('./location')(apiRoutes, express);
 
         app.use('/api', apiRoutes);
-    }
+    };
 }());
