@@ -70,7 +70,7 @@ export default class App extends Component {
           lat: lats,
           lng: lngs,
           zoom: 6,
-          zoomControl : true,
+          zoomControl : false,
           panControl : false,
           streetViewControl : false,
           mapTypeControl: false,
