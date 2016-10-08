@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './SearchBar.scss'
 export default class SearchBar extends Component {
   constructor(props){
     super(props)
@@ -19,7 +20,7 @@ export default class SearchBar extends Component {
         <button className="btn btn-secondary" type="button">Go!</button>
       </span>
     </div> */}
-        <form className="form-horizontal" onSubmit={this.handleSubmit}>
+        <form className="form-horizontal search-form" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <div className="col-xs-12 col-md-6 col-md-offset-3">
               <div className="input-group">

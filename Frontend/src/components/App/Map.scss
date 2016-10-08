@@ -15,12 +15,19 @@
 	// position:absolute;
 	height:0;
 
-	.btn-currentlocation{
-		position: absolute;
-		margin-top: 200px;
-		border-radius: 5px;
-		padding-top: 18px;
-		background-image: url(../../assets/my_location.svg);
+	.btn-currentlocation {
+			position: absolute;
+			top: 80%;
+			left: 85%;
+			border-radius: 5px;
+			// padding-top: 18px;
+
 	}
-	
+
+	.icon-mylocation {
+		content:  url(../../assets/my_location.svg);
+		// position: absolute;
+		// margin-top: 100px;
+	}
+
 }
