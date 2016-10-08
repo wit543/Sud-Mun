@@ -15,7 +15,7 @@
     });
     app.use(morgan('dev'));
 
-    app.listen(3000, function(req, res) {
+    app.listen(port, function(req, res) {
         console.log('Listening on port 3000...');
     });
     require('./routes/routesManager')(app, express);
