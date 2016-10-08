@@ -4,7 +4,7 @@ import React, {
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 import './Map.scss'
-import {Map} from '../Map'
+import {MapFlood} from '../Map'
 import Navbar from './Navbar'
 import SearchBar from './SearchBar'
 import 'whatwg-fetch'
@@ -18,7 +18,7 @@ export default class App extends Component {
       <div >
         <Navbar/>
         <SearchBar/>
-        <Map/>
+        <MapFlood/>
       </div>
     )
   }
