@@ -105,6 +105,8 @@ export default class App extends Component {
         <div className="map-container">
           {/* <div id="map"></div> */}
           <button onClick={this.setCurrentPosition.bind(this)}>Me</button>
+          <div id="map"></div>
+          <button className="btn btn-default btn-currentlocation" onClick={this.setCurrentPosition.bind(this)}></button>
         </div>
       </div>
     )
