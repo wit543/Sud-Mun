@@ -9,10 +9,13 @@
 	position: absolute;
 }
 
-.map-holder {
+.map-container {
 	// overflow:auto;
-	// position:relative;
-
-
+	// position:absolute;
 	height:0;
+
+	button{
+		position: absolute;
+		margin-top: 200px;
+	}
 }

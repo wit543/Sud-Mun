@@ -101,8 +101,9 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        <div className="map-holder">
+        <div className="map-container">
           <div id="map"></div>
+          <button onClick={this.setCurrentPosition.bind(this)}>Me</button>
         </div>
         {/* <button onClick={this.setCurrentPosition.bind(this)}>Me</button> */}
       </div>
