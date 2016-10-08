@@ -1,23 +1,21 @@
 (function() {
     'use strict';
     module.exports = function(app) {
-        const serverListener = function(lat, lon) {
+        const serverListener = function(waterLevel) {
+
+        };
+        app.post('/location', function(req, res) {
             const net = require('net');
             const client = new net.Socket();
             client.connect(5000, 'localhost', function() {
-                client.write(`${lat},${lon}`);
+                client.write(`${req.body.waterLevel}\n`);
             });
 
-            let suggestedData = {};
             client.on('data', function(data) {
-                suggestedData = JSON.stringify(data.toString());
                 client.end();
 
-                return suggestedData;
+                return res.json({data: data.toString().replace(/(\r\n|\n|\r|\{|\})/gm, "")});
             });
-        };
-        app.post('/location', function(req, res) {
-            return res.json(serverListener(req.body.lat, req.body.lon));
         });
     };
 }());
