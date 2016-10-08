@@ -1,6 +1,6 @@
 (function() {
     'use strict';
-    module.exports = function(app) {
+    module.exports = function(app, net) {
         app.get('/flood/months', function(req, res) {
             return res.json({
                 jan: 100,

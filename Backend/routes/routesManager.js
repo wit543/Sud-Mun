@@ -2,12 +2,13 @@
     'use strict';
     module.exports = function(app, express) {
         const apiRoutes = express.Router();
+        const net = require('net');
 
-        require('./location')(apiRoutes);
+        require('./location')(apiRoutes, net);
 
-        require('./flood')(apiRoutes);
+        require('./flood')(apiRoutes, net);
 
-        require('./drought')(apiRoutes);
+        require('./drought')(apiRoutes, net);
 
         app.use('/api', apiRoutes);
     };
