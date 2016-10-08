@@ -100,9 +100,10 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        {/* <Navbar/> */}
+        <SearchBar/>
         <div className="map-container">
-          <div id="map"></div>
+          {/* <div id="map"></div> */}
           <button onClick={this.setCurrentPosition.bind(this)}>Me</button>
         </div>
       </div>
