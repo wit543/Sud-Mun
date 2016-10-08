@@ -10,6 +10,8 @@
 
         require('./drought')(apiRoutes, net);
 
+        app.use('/static', express.static('public'));
+
         app.use('/api', apiRoutes);
     };
 }());
