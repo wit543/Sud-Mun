@@ -6,7 +6,7 @@
 
         require('./location')(apiRoutes, net);
 
-        require('./flood')(apiRoutes, net);
+        require('./flood')(apiRoutes);
 
         require('./drought')(apiRoutes, net);
 
