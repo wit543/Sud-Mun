@@ -1,0 +1,22 @@
+{
+  "name": "sudmun_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PNNutkung",
+  "license": "MIT",
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "eslint": "^3.7.1",
+    "eslint-config-google": "^0.6.0",
+    "eslint-config-standard": "^6.2.0",
+    "eslint-plugin-promise": "^3.0.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.3",
+    "morgan": "^1.7.0"
+  }
+}
