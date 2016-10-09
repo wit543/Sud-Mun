@@ -34,7 +34,7 @@ export default class Map extends Component{
   constructor(props){
     super(props)
     this.close = this.props.onClose
-    this.state =  { showModal: false }
+    this.state =  { showModal: false, rice:{RD5: 0, P601: 0, TPG161: 0, RD19: 0} }
 
   }
 
@@ -220,6 +220,27 @@ strokeColor: '#FF0000',
       fillOpacity: 0.35
   });
 
+  // a.setMap(map.map);
+  //       b.setMap(map.map);
+  //       c.setMap(map.map);
+  //       d.setMap(map.map);
+  //       e.setMap(map.map);
+  //       f.setMap(map.map);
+  //       g.setMap(map.map);
+  //       h.setMap(map.map);
+  //       i.setMap(map.map);
+  //       j.setMap(map.map);
+  //       k.setMap(map.map);
+  //       l.setMap(map.map);
+  //       m.setMap(map.map);
+  //       n.setMap(map.map);
+  //       o.setMap(map.map);
+  //       p.setMap(map.map);
+  //       q.setMap(map.map);
+  //       r.setMap(map.map);
+  //       s.setMap(map.map);
+  //       t.setMap(map.map);
+
 var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
 // for(var i =0;i<innerCoords.length;i++){
 // 	var p = new google.maps.Polygon({
@@ -292,46 +313,11 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
         console.log("Done!");
       }
     });
+    this.sendWaterLevel()
   }
 
-//   codeLatLng(lat, lng) {
-//     let geocoder = new google.maps.Geocoder();
-//     var latlng = new google.maps.LatLng(lat, lng);
-//     geocoder.geocode({latLng: latlng}, function(results, status) {
-//       if (status == google.maps.GeocoderStatus.OK) {
-//         if (results[1]) {
-//           var arrAddress = results;
-//           $.each(arrAddress, function(i, address_component) {
-//             if (address_component.types[0] == "locality") {
-//               console.log("City: " + address_component.address_components[0].long_name);
-//               cityname = address_component.address_components[0].long_name;
-//             }
-//           });
-//         } else {
-//           alert("No results found");
-//         }
-//       } else {
-//         alert("Geocoder failed due to: " + status);
-//       }
-//     });
-// }
-
-  addMark(){
+  sendWaterLevel(){
     var self = this
-    GMaps.on('click', map.map, function(event) {
-      lats = event.latLng.lat();
-      lngs = event.latLng.lng();
-      map.removeMarkers()
-      map.addMarker({
-        lat: lats,
-        lng: lngs,
-        title: 'You are here',
-        click: function(e) {
-          self.onShowModal()
-        }
-      });
-
-    });
     var current = new google.maps.LatLng(lats, lngs);//here
       current.geodesic = true;
     var out=[];
@@ -355,14 +341,11 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
      col(current,r,function(input){console.log(input);out[17]=input;});
      col(current,s,function(input){console.log(input);out[18]=input;});
      col(current,t,function(input){console.log(input);out[19]=input;});
-    console.log(out);
 
       setTimeout(function(){
       var index = out.indexOf("in");
 
-      console.log("water",water[index])//here
       let data = {"waterLevel":water[index]}
-      console.log("parseInt",parseInt(data.waterLevel));
       if(data.waterLevel != undefined){
       console.log("send",data.waterLevel)
 
@@ -382,16 +365,37 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
             }
             return response;
           }).then(function(response) {
-            console.log('parsed response', response)
+            // console.log('parsed response', response)
             return response.json()
           }).then(function(json) {
             console.log('parsed json', json)
+            self.setState({rice: json})
+            console.log('stateset',self.state.rice);
           }).catch(function(ex) {
-            console.log('parsing failed', ex)
+            // console.log('parsing failed', ex)
           });
         }
 
     },2000);
+  }
+
+  addMark(){
+    var self = this
+    GMaps.on('click', map.map, function(event) {
+      lats = event.latLng.lat();
+      lngs = event.latLng.lng();
+      map.removeMarkers()
+      map.addMarker({
+        lat: lats,
+        lng: lngs,
+        title: 'You are here',
+        click: function(e) {
+          self.onShowModal()
+        }
+      });
+
+    });
+    this.sendWaterLevel()
   }
 
   onClickSearch(e){
@@ -439,6 +443,7 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
           });
   			}
   		});
+      this.sendWaterLevel()
   	}
 
   render(){
@@ -451,7 +456,7 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
           onClick = {this.setCurrentPosition.bind(this)}>
           <span className = "icon-mylocation" aria-hidden = "true" ></span>
         </button>
-        <MapModal showModal={this.state.showModal} onClose={this.onCloseModal.bind(this)}/>
+        <MapModal showModal={this.state.showModal} onClose={this.onCloseModal.bind(this)} riceData={this.state.rice}/>
       </div>
     );
   }

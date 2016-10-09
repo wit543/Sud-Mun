@@ -7,14 +7,15 @@ export default class MapModal extends Component{
 
   constructor(props){
     super(props)
-    this.state =  { showModal: false }
+    this.state =  { showModal: false, rice:{RD5: 0, P601: 0, TPG161: 0, RD19: 0} }
 
   }
 
   componentWillReceiveProps(nextProps){
       //console.log(nextProps);
     if(nextProps.showModal == true){
-      this.setState({ showModal: true })
+      console.log('riceModal',this.props.riceData);
+      this.setState({ showModal: true, rice:this.props.riceData })
     }
   }
 
@@ -34,7 +35,7 @@ export default class MapModal extends Component{
           <Modal.Title className="modal-title">Information</Modal.Title>
         </Modal.Header>
           <div className='text-center'>
-          <MapForm  />
+          <MapForm riceData={this.state.rice} />
           </div>
         <Modal.Body>
         </Modal.Body>

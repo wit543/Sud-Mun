@@ -47,24 +47,39 @@ import { FormGroup ,
   export default class MapForm extends Component {
     constructor(props){
       super(props);
+      // this.state = {rice:{RD5: 0, P601: 0, TPG161: 0, RD19: 0}}
+
     }
 
     componentDidMount(){
 
     }
 
+    // componentWillReceiveProps(nextProps){
+    //     //console.log(nextProps);
+    //     console.log('riceForm',nextProps.rice);
+    //     // this.setState({rice:nextProps.rice })
+    // }
+
     renderInformation(){
+      console.log("ricestate",this.props.riceData);
+      var rice = this.props.riceData
       return(
         <div>
-        {this.renderRice1()}
+        {this.renderRice1(rice.RD5)}
         <br/><br/>
-        {this.renderRice2()}
+        {this.renderRice2(rice.P601)}
+        <br/><br/>
+        {this.renderRice3(rice.TPG161)}
+        <br/><br/>
+        {this.renderRice4(rice.RD19)}
         </div>
       )
 
     }
 
-    renderRice1(){
+    renderRice1(bool){
+      if(bool===1){
       return(
       <div>
       <Row className="row">
@@ -121,9 +136,12 @@ import { FormGroup ,
         </Col>
       </Row>
       </div>)
+      }
+      else{return(<div></div>)}
     }
 
-    renderRice2(){
+    renderRice2(bool){
+      if(bool===1){
       return(
       <div>
       <Row className="row">
@@ -179,10 +197,12 @@ import { FormGroup ,
           <span className="warnning text">{P601.warnning}</span>
         </Col>
       </Row>
-      </div>)
+      </div>)}
+      else return(<div></div>)
     }
 
-    renderRice3(){
+    renderRice3(bool){
+      if(bool===1){
       return(
       <div>
       <Row className="row">
@@ -238,10 +258,12 @@ import { FormGroup ,
           <span className="warnning text">{RD19.warnning}</span>
         </Col>
       </Row>
-      </div>)
+      </div>)}
+      else return(<div></div>)
     }
 
-    renderRice4(){
+    renderRice4(bool){
+      if(bool===1){
       return(
       <div>
       <Row className="row">
@@ -297,7 +319,8 @@ import { FormGroup ,
           <span className="warnning text">{TPG161.warnning}</span>
         </Col>
       </Row>
-      </div>)
+      </div>)}
+      return(<div></div>)
     }
 
       render() {
