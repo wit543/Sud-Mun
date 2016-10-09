@@ -7,7 +7,7 @@ import { FormGroup ,
   FormControl,} from 'react-bootstrap'
 
   var RD5 = {
-    varity:"กข45 ( RD5 )",
+    varity:"กข5 ( RD5 )",
     age:"ปลายพฤศจิกายน",
     area:"ลุ่ม น้ำลึกไม่เกิน50ซม",
     season:"นาปี",

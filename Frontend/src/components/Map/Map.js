@@ -357,40 +357,40 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
      col(current,t,function(input){console.log(input);out[19]=input;});
     console.log(out);
 
-    setTimeout(function(){
+      setTimeout(function(){
       var index = out.indexOf("in");
 
-      console.log("water",water[index]);//here
+      console.log("water",water[index])//here
       let data = {"waterLevel":water[index]}
-      console.log("data",data)
-     fetch(API_LOCATION,
+      console.log("parseInt",parseInt(data.waterLevel));
+      if(data.waterLevel != undefined){
+      console.log("send",data.waterLevel)
+
+      fetch(API_LOCATION,
           {
             method: 'POST',
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify(
-              data
-            )
+            body:JSON.stringify({
+              waterLevel: data.waterLevel
+            })
           }).then(function(response) {
             if (!response.ok) {
               throw Error(response.statusText);
             }
             return response;
           }).then(function(response) {
-            console.log("water is ok");
-            console.log(response)
-          }).catch(function(error) {
-            console.log(error);
+            console.log('parsed response', response)
+            return response.json()
+          }).then(function(json) {
+            console.log('parsed json', json)
+          }).catch(function(ex) {
+            console.log('parsing failed', ex)
           });
+        }
 
-  let response
-    $.post(API_LOCATION,{},function(data){
-      response = JSON.parse(data);
-      console.log(response)
-      console.log("water is ok jque");
-    })
     },2000);
   }
 
