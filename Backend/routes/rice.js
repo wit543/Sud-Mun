@@ -6,7 +6,7 @@
             Rice.findOne({
                 'varity': req.params.name
             }, function(err, rice) {
-                if (error) {
+                if (err) {
                     return res.json({
                         message: 'Something wrong'
                     });
