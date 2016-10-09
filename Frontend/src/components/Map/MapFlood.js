@@ -1,12 +1,44 @@
 
 import React, { Component } from 'react'
-const END_POINT = 'http://ipinfo.io/'
-const API_FLOOD = 'http://128.199.192.241:3000/api/flood/2005'
+import SearchBar from '../App/SearchBar'
+// const END_POINT = 'http://ipinfo.io/'
+var end_point
+const API_FLOOD = 'http://128.199.192.241:3000/api/flood/'
 var map
 var infoWindow
 var lats = ''
 var lngs = ''
+var ctaLayer
 export default class MapFlood extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      value:2009
+    }
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(e) {
+ctaLayer = new google.maps.KmlLayer(null);
+ctaLayer.setMap(null)
+		this.setState({value: e.target.value})
+    end_point =  API_FLOOD+e.target.value+"/"
+    console.log(end_point);
+    map = new GMaps({
+      el: '#map',
+      lat: lats,
+      lng: lngs,
+      zoomControl: false,
+      panControl: false,
+      streetViewControl: false,
+      mapTypeControl: false,
+      overviewMapControl: false
+    });
+    map.loadFromKML({
+      url: end_point
+      })
+	}
+
   createMap() {
     map = new GMaps({
       el: '#map',
@@ -20,18 +52,7 @@ export default class MapFlood extends Component{
     });
     infoWindow = new google.maps.InfoWindow({});
     map.loadFromKML({
-      url: API_FLOOD,
-      suppressInfoWindows: true,
-      events: {
-
-        click: function(point) {
-          infoWindow.setContent(point.featureData.infoWindowHtml);
-          infoWindow.setPosition(point.latLng);
-          infoWindow.open(map.map);
-        }
-
-      }
-    });
+      url: API_FLOOD+"2005/"})
     this.setCurrentPosition();
   }
 
@@ -73,29 +94,21 @@ export default class MapFlood extends Component{
         console.log('poslon:' + position.coords.longitude)
         lats = position.coords.latitude
         lngs = position.coords.longitude
-
-        map = new GMaps({
-          el: '#map',
-          lat: lats,
-          lng: lngs,
-          zoom: 6,
-          zoomControl: true,
-          panControl: false,
-          streetViewControl: false,
-          mapTypeControl: false,
-          overviewMapControl: false
-        });
+        map.lat = lats
+        map.lng = lngs
+        map.removeMarkers()
         map.addMarker({
           lat: lats,
           lng: lngs,
           title: 'Your are here',
           click: function(e) {
-            alert('Hello');
+            self.onShowModal()
           }
         });
         infoWindow = new google.maps.InfoWindow({});
+        end_point =  API_FLOOD+"2005/"
         map.loadFromKML({
-          url: API_FLOOD,
+          url: end_point,
           suppressInfoWindows: true,
           events: {
 
@@ -124,15 +137,67 @@ export default class MapFlood extends Component{
       let input = ReactDOM.findDOMNode(this.refs.input_search).value
       console.log("search",input);
   }
+  searchForAddress(address){
+
+  		var self = this;
+      console.log('address',address);
+  		GMaps.geocode({
+  			address: address,
+  			callback: function(results, status) {
+
+  				if (status !== 'OK') return;
+
+  				var latlng = results[0].geometry.location;
+
+  				self.setState({
+  					currentAddress: results[0].formatted_address,
+  					mapCoordinates: {
+  						lat: latlng.lat(),
+  						lng: latlng.lng()
+  					}
+  				});
+          console.log("new",latlng.lat());
+          console.log("new",latlng.lng());
+          map.lat = latlng.lat()
+          map.lng =  latlng.lng()
+
+          lats = latlng.lat()
+          lngs = latlng.lng()
+
+          map.removeMarkers()
+          map.setCenter(map.lat, map.lng );
+          map.addMarker({
+            lat: lats,
+            lng: lngs,
+            title: results[0].formatted_address,
+            click: function(e) {
+              self.onShowModal()
+            }
+          });
+  			}
+  		});
+
+  	}
   render(){
 
     return (
       <div className = "map-container">
+        <SearchBar
+          onSearch={this.searchForAddress.bind(this)} />
         <div id = "map" ></div>
         <button className = "btn btn-default btn-currentlocation btn-sm"
           onClick = {this.setCurrentPosition.bind(this)}>
           <span className = "icon-mylocation" aria-hidden = "true" ></span>
         </button>
+    <div className="row row-slider">
+            <div className="col-md-4 col-xs-4"></div>
+      <div className="col-md-4 col-xs-4">
+        <input type="range" name="points" className = "silder" min="2005" max="2014"
+          value={this.state.value} onChange={this.handleChange}
+          />
+      </div>
+      <div className="col-md-4 col-xs-4"></div>
+    </div>
       </div>
     );
   }

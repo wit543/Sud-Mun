@@ -131,10 +131,6 @@ export default class Map extends Component{
 
   		var self = this;
       console.log('address',address);
-
-  		// We will use GMaps' geocode functionality,
-  		// which is built on top of the Google Maps API
-
   		GMaps.geocode({
   			address: address,
   			callback: function(results, status) {
