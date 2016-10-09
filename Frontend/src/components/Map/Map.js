@@ -6,6 +6,7 @@ import  MapModal  from './MapModal'
 const END_POINT = 'http://ipinfo.io/'
 const API_FLOOD = 'http://128.199.192.241:3000/api/flood/2005'
 var map
+var cityname;
 var infoWindow
 var lats = ''
 var lngs = ''
@@ -66,9 +67,7 @@ export default class Map extends Component{
       lat: this.lats,
       lng: this.lngs
     });
-
   }
-
 
   setCurrentPosition() {
     var self = this
@@ -79,14 +78,13 @@ export default class Map extends Component{
         console.log('poslon:' + position.coords.longitude)
         lats = position.coords.latitude
         lngs = position.coords.longitude
-
         map.lat = lats
         map.lng = lngs
         map.removeMarkers()
         map.addMarker({
           lat: lats,
           lng: lngs,
-          title: 'Your are here',
+          title: 'You are here',
           click: function(e) {
             self.onShowModal()
           }
@@ -104,6 +102,28 @@ export default class Map extends Component{
     });
   }
 
+//   codeLatLng(lat, lng) {
+//     let geocoder = new google.maps.Geocoder();
+//     var latlng = new google.maps.LatLng(lat, lng);
+//     geocoder.geocode({latLng: latlng}, function(results, status) {
+//       if (status == google.maps.GeocoderStatus.OK) {
+//         if (results[1]) {
+//           var arrAddress = results;
+//           $.each(arrAddress, function(i, address_component) {
+//             if (address_component.types[0] == "locality") {
+//               console.log("City: " + address_component.address_components[0].long_name);
+//               cityname = address_component.address_components[0].long_name;
+//             }
+//           });
+//         } else {
+//           alert("No results found");
+//         }
+//       } else {
+//         alert("Geocoder failed due to: " + status);
+//       }
+//     });
+// }
+
   addMark(){
     var self = this
     GMaps.on('click', map.map, function(event) {
@@ -113,7 +133,7 @@ export default class Map extends Component{
       map.addMarker({
         lat: lats,
         lng: lngs,
-        title: 'Your are here',
+        title: 'You are here',
         click: function(e) {
           self.onShowModal()
         }
@@ -166,15 +186,14 @@ export default class Map extends Component{
           });
   			}
   		});
-
   	}
-  render(){
 
+  render(){
     return (
       <div className = "map-container">
         <SearchBar
           onSearch={this.searchForAddress.bind(this)} />
-        <div id = "map" onDoubleClick={this.addMark.bind(this)}></div>
+        <div id = "map" onClick={this.addMark.bind(this)}></div>
         <button className = "btn btn-default btn-currentlocation btn-sm"
           onClick = {this.setCurrentPosition.bind(this)}>
           <span className = "icon-mylocation" aria-hidden = "true" ></span>
