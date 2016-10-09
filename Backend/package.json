@@ -16,6 +16,7 @@
     "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-standard": "^2.0.1",
     "express": "^4.14.0",
-    "morgan": "^1.7.0",
+    "mongoose": "^4.6.3",
+    "morgan": "^1.7.0"
   }
 }
