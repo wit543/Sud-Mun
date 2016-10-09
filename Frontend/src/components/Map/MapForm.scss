@@ -1,7 +1,22 @@
 .title {
   font-size: 20px;
-
+  font-weight: bold;
 }
+
+.text{
+  font-size: 16px;
+  padding-bottom: 3px
+}
+
+.head{
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.row{
+  padding-bottom: 15px;
+}
+
 .icon {
   content:  url(../../assets/my_location.svg);
 }
