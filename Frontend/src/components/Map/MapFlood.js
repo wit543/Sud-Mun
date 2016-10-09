@@ -196,8 +196,19 @@ ctaLayer.setMap(null)
           value={this.state.value} onChange={this.handleChange}
           />
       </div>
-      <div className="col-md-4 col-xs-4"></div>
+      <div className="col-md-2 col-xs-2">
+      </div>
+      <div className="col-md-2 col-xs-2 "></div>
     </div>
+
+    <div className="row">
+      <div className="col-md-4 col-xs-4"></div>
+      <div className="col-md-4 col-xs-4 text-year">
+        <div className="">{"Flood area in " + this.state.value +" year "}</div>
+      </div>
+      <div className="col-md-4 col-xs-4 "></div>
+    </div>
+
       </div>
     );
   }
