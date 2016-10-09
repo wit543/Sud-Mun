@@ -286,6 +286,7 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
     var self = this
     GMaps.geolocate({
       success: function(position) {
+        map.setZoom(12)
         map.setCenter(position.coords.latitude, position.coords.longitude);
         console.log('poslat:' + position.coords.latitude)
         console.log('poslon:' + position.coords.longitude)
@@ -375,8 +376,11 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
             // console.log('parsing failed', ex)
           });
         }
+        else{
+          self.setState({rice:{RD5: 0, P601: 0, TPG161: 0, RD19: 0}})
+        }
 
-    },2000);
+    },1000);
   }
 
   addMark(){
@@ -425,6 +429,7 @@ var Polygons=[a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t];
   				});
           console.log("new",latlng.lat());
           console.log("new",latlng.lng());
+          map.setZoom(12)
           map.lat = latlng.lat()
           map.lng =  latlng.lng()
 

@@ -19,8 +19,8 @@ export default class MapFlood extends Component{
   }
 
   handleChange(e) {
-ctaLayer = new google.maps.KmlLayer(null);
-ctaLayer.setMap(null)
+    ctaLayer = new google.maps.KmlLayer(null);
+    ctaLayer.setMap(null)
 		this.setState({value: e.target.value})
     end_point =  API_FLOOD+e.target.value+"/"
     console.log(end_point);
@@ -100,6 +100,7 @@ ctaLayer.setMap(null)
         map.lat = lats
         map.lng = lngs
         map.removeMarkers()
+
         map.addMarker({
           lat: lats,
           lng: lngs,
@@ -123,6 +124,7 @@ ctaLayer.setMap(null)
 
           }
         });
+
       },
       error: function(error) {
         alert('Geolocation failed: ' + error.message);
