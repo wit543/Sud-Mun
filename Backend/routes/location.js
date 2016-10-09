@@ -13,8 +13,13 @@
 
             client.on('data', function(data) {
                 client.end();
-
-                return res.json({data: data.toString().replace(/(\r\n|\n|\r|\{|\})/gm, "")});
+                let array = JSON.parse(data.toString().replace(/(\r\n|\n|\r|\{|\}|\\|\/)/gm, ""));
+                return res.json({
+                    RD5: array[0],
+                    P601: array[1],
+                    TPG161: array[2],
+                    RD19: array[3]
+                });
             });
         });
     };
