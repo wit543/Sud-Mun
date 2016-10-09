@@ -17,12 +17,12 @@ import { FormGroup ,
           <div className="text-center">
             <form className="MapForm">
             <br/>
-              <Row className="row">
+              <Row className="row row-head">
                 <Col md={4}>
-                  <span className="icon"></span>
+                  <img src="src/assets/rice_icon.png" className="icon"/>
                 </Col>
-                <Col md={6}>
-                  <span className="title text">Rice ข้าวที่แนะนำ</span>
+                <Col md={6} className="col-headtext">
+                  <span className="title">Rice ข้าวที่แนะนำ</span>
                 </Col>
               </Row>
 

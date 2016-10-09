@@ -1,6 +1,7 @@
 import React,{ Component } from 'react'
 import { Modal } from 'react-bootstrap'
 import MapForm from './MapForm'
+import './MapModal.scss'
 
 export default class MapModal extends Component{
 
@@ -30,7 +31,7 @@ export default class MapModal extends Component{
       <Modal show={this.state.showModal}
         onHide={this.onCloseModal.bind(this)} >
         <Modal.Header closeButton>
-          <Modal.Title>Information</Modal.Title>
+          <Modal.Title className="modal-title">Information</Modal.Title>
         </Modal.Header>
           <div className='text-center'>
           <MapForm  />
