@@ -37,6 +37,7 @@ ctaLayer.setMap(null)
     map.loadFromKML({
       url: end_point
       })
+    this.setCurrentPosition();
 	}
 
   createMap() {

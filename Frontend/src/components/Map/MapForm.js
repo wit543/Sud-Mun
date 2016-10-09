@@ -46,7 +46,7 @@ import { FormGroup ,
 
               <Row className="row">
                 <Col md={4}>
-                  <span className="area-head head">พ์้นที่ปลูก</span>
+                  <span className="area-head head">พื้นที่เพาะปลูก</span>
                 </Col>
                 <Col md={6}>
                   <span className="area text">ลุ่ม น้ำลึกไม่เกิน50ซม</span>
