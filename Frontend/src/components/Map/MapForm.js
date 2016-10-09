@@ -67,21 +67,26 @@ import { FormGroup ,
       return(
         <div>
         {this.renderRice1(rice.RD5)}
-        <br/><br/>
         {this.renderRice2(rice.P601)}
-        <br/><br/>
         {this.renderRice3(rice.TPG161)}
-        <br/><br/>
         {this.renderRice4(rice.RD19)}
+        {this.renderNothing(rice.RD5,rice.P601,rice.TPG161,rice.RD19)}
         </div>
       )
 
     }
 
+    renderNothing(b1,b2,b3,b4){
+      if(b1===0&&b2===0&&b3===0&&b4===0){
+        return(<div><span className="head">ไม่มีข้อมูล</span></div>)
+      }
+      else return(<div></div>)
+    }
     renderRice1(bool){
       if(bool===1){
       return(
       <div>
+      <br/><br/>
       <Row className="row">
         <Col md={4}>
           <span className="type-head head">พันธุ์</span>
@@ -144,6 +149,7 @@ import { FormGroup ,
       if(bool===1){
       return(
       <div>
+      <br/><br/>
       <Row className="row">
         <Col md={4}>
           <span className="type-head head">พันธุ์</span>
@@ -205,6 +211,7 @@ import { FormGroup ,
       if(bool===1){
       return(
       <div>
+      <br/><br/>
       <Row className="row">
         <Col md={4}>
           <span className="type-head head">พันธุ์</span>
@@ -266,6 +273,7 @@ import { FormGroup ,
       if(bool===1){
       return(
       <div>
+      <br/><br/>
       <Row className="row">
         <Col md={4}>
           <span className="type-head head">พันธุ์</span>

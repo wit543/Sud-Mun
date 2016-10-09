@@ -51,7 +51,7 @@ export default class Map extends Component{
       el: '#map',
       lat: 14.46523,
       lng: 100.13137,
-      zoom: 6,
+      zoom: 7,
       zoomControl: false,
       panControl: false,
       streetViewControl: false,

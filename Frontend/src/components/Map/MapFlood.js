@@ -31,6 +31,7 @@ ctaLayer.setMap(null)
       zoomControl: false,
       panControl: false,
       streetViewControl: false,
+      zoom: 7,
       mapTypeControl: false,
       overviewMapControl: false
     });
@@ -45,6 +46,7 @@ ctaLayer.setMap(null)
       el: '#map',
       lat: 14.46523,
       lng: 100.13137,
+      zoom: 7,
       zoomControl: false,
       panControl: false,
       streetViewControl: false,

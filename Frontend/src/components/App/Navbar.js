@@ -30,7 +30,7 @@ export default class Navbar extends Component {
                     Flood
                   </Link>
                 </li>
-                <li ><a href="#">Drought</a></li>
+                {/* <li ><a href="#">Drought</a></li> */}
               </ul>
               <ul className="nav navbar-nav navbar-right">
               </ul>
